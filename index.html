@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://alcdn.msauth.net/lib/1.4.11/js/msal.min.js"></script>
+    </head>
+    <body>
+        <button onclick="login()">Login</button>
+    </body>
+</html>
+<script>
+    const msalConfig = {
+        auth: {
+            clientId: 'クライアントID', // クライアントID
+            authority: "https://login.microsoftonline.com/{テナントID}/", //末尾はテナントID
+            redirectUri: 'http://localhost:8080' // リダイレクト先URL
+        }
+    };
+
+    const msalInstance = new Msal.UserAgentApplication(msalConfig);
+    
+    var loginRequest = {
+        scopes: ["user.read", "mail.send"]
+    };
+
+    function login(){
+        msalInstance.loginPopup(loginRequest)
+        .then(response => {
+            console.log(response)
+            const accessTokenRequest = {
+                scopes: ["user.read"],
+            }
+            msalInstance.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
+                // Acquire token silent success
+                let accessToken = accessTokenResponse.accessToken;
+                // Call your API with token
+                console.log(accessToken);
+            })
+        })
+    }
+    
+    
+</script>

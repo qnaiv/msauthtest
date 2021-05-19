@@ -1,0 +1,23 @@
+{
+  "name": "msauthtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "http-server ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qnaiv/msauthtest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qnaiv/msauthtest/issues"
+  },
+  "homepage": "https://github.com/qnaiv/msauthtest#readme",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}
